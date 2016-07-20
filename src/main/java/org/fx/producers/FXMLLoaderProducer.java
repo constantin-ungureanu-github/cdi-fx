@@ -1,12 +1,13 @@
-package org.fx.weld;
+package org.fx.producers;
 
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import javafx.fxml.FXMLLoader;
-import javafx.util.Callback;
 
+@Singleton
 public class FXMLLoaderProducer {
     @Inject
     Instance<Object> instance;
@@ -14,12 +15,7 @@ public class FXMLLoaderProducer {
     @Produces
     public FXMLLoader createLoader() {
         final FXMLLoader loader = new FXMLLoader();
-        loader.setControllerFactory(new Callback<Class<?>, Object>() {
-            @Override
-            public Object call(final Class<?> param) {
-                return instance.select(param).get();
-            }
-        });
+        loader.setControllerFactory(parameters -> instance.select(parameters).get());
         return loader;
     }
 }
