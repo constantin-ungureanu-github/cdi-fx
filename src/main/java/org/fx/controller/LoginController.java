@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import org.fx.model.LoginModel;
 import org.fx.services.LoginService;
@@ -25,14 +26,23 @@ public class LoginController {
     @FXML
     private Text feedback;
 
+    @FXML
+    private BasicController basicController;
+
     @Inject
     private LoginService loginService;
 
     private LoginModel loginModel;
 
+    private Stage myStage;
+    public void setStage(final Stage stage) {
+         myStage = stage;
+    }
+
     @FXML
-    protected void handleSubmitButtonAction(final ActionEvent event) {
+    void handleSubmitButtonAction(final ActionEvent event) {
         feedback.setText(loginService.login(username.getText(), password.getText()));
+        basicController.initialize();
     }
 
     @FXML

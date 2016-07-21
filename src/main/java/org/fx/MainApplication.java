@@ -10,7 +10,7 @@ public class MainApplication extends Application {
     private Weld weld;
 
     public static void main(final String[] args) {
-        Application.launch(args);
+        launch(args);
     }
 
     @Override
@@ -19,8 +19,8 @@ public class MainApplication extends Application {
     }
 
     @Override
-    public void start(final Stage stage) {
-        weld.initialize().instance().select(LoginApplication.class).get().start(stage);
+    public void start(final Stage primaryStage) {
+        weld.initialize().instance().select(LoginApplication.class).get().start(primaryStage);
     }
 
     @Override
