@@ -1,5 +1,7 @@
 package org.fx.application;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +14,7 @@ public class Starter extends Application {
     }
 
     @Override
-    public void start(final Stage stage) throws Exception {
+    public void start(final Stage stage) throws IOException  {
         final Parent parent = FXMLLoader.load(getClass().getResource("/fxml/view/MainView.fxml"));
         final Scene scene = new Scene(parent);
         stage.setScene(scene);

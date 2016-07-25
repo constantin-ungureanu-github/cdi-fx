@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fx.application.MainController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="org.fx.application.MainController">
     <children>
         <Circle radius="100.0" stroke="BLACK" strokeType="INSIDE" />
         <fx:include fx:id="red" source="/fxml/view/RedView.fxml" />

@@ -16,14 +16,13 @@ public class FxFXMLController {
     @FXML
     private TextArea outputText;
 
-    // location and resources will be automatically injected by the FXML loader
+    // Location and resources will be automatically injected by the FXML loader
     @FXML
     private URL location;
 
     @FXML
     private ResourceBundle resources;
 
-    // Add a public no-args constructor
     public FxFXMLController() {
     }
 
@@ -34,5 +33,7 @@ public class FxFXMLController {
     @FXML
     private void printOutput() {
         outputText.setText(inputText.getText());
+        System.out.println(location);
+        System.out.println(resources);
     }
 }

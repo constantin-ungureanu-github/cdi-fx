@@ -14,8 +14,8 @@ public class FXMLLoaderProducer {
 
     @Produces
     public FXMLLoader createLoader() {
-        final FXMLLoader loader = new FXMLLoader();
-        loader.setControllerFactory(parameters -> instance.select(parameters).get());
-        return loader;
+        final FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(param -> instance.select(param).get());
+        return fxmlLoader;
     }
 }

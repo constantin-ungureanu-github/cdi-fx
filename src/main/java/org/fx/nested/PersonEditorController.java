@@ -7,11 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class PersonEditorController {
-    private final ObjectProperty<Person> person;
     @FXML
     private TextField firstName;
+
     @FXML
     private TextField lastName;
+
+    private final ObjectProperty<Person> person;
 
     public PersonEditorController() {
         person = new SimpleObjectProperty<>(this, "person", null);

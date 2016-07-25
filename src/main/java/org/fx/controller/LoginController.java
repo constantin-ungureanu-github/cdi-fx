@@ -2,16 +2,17 @@ package org.fx.controller;
 
 import javax.inject.Inject;
 
+import javafx.application.Application.Parameters;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import org.fx.model.LoginModel;
 import org.fx.services.LoginService;
+import org.slf4j.Logger;
 
 public class LoginController {
     @FXML
@@ -26,27 +27,26 @@ public class LoginController {
     @FXML
     private Text feedback;
 
-    @FXML
-    private BasicController basicController;
+    @Inject
+    private Logger logger;
+
+    @Inject
+    Parameters applicationParameters;
 
     @Inject
     private LoginService loginService;
 
     private LoginModel loginModel;
 
-    private Stage myStage;
-    public void setStage(final Stage stage) {
-         myStage = stage;
-    }
-
     @FXML
     void handleSubmitButtonAction(final ActionEvent event) {
         feedback.setText(loginService.login(username.getText(), password.getText()));
-        basicController.initialize();
     }
 
     @FXML
     public void initialize() {
+        logger.info("Initialize LoginController.");
+
         loginModel = new LoginModel("", "");
 
         username.textProperty().bindBidirectional(loginModel.getUsername());
