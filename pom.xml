@@ -89,7 +89,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.fx.MainApplication</mainClass>
+                            <mainClass>org.fx.Main</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                             <addClasspath>true</addClasspath>
                         </manifest>
