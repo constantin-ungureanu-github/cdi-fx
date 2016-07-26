@@ -14,7 +14,7 @@ public class PersonViewer extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws IOException {
-        final Scene scene = new Scene(FXMLLoader.load(getClass().getResource("fxml/view/PersonViewer.fxml")), 600, 400);
+        final Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/view/PersonViewer.fxml")), 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
