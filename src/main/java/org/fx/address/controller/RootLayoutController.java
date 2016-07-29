@@ -28,8 +28,7 @@ public class RootLayoutController {
         final FileChooser fileChooser = new FileChooser();
 
         // Set extension filter
-        final FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
+        final FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
 
         // Show save file dialog
@@ -40,10 +39,6 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Saves the file to the person file that is currently open. If there is no
-     * open file, the "save as" dialog is shown.
-     */
     @FXML
     private void handleSave() {
         final File personFile = mainApp.getPersonFilePath();
@@ -54,16 +49,12 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Opens a FileChooser to let the user select a file to save to.
-     */
     @FXML
     private void handleSaveAs() {
         final FileChooser fileChooser = new FileChooser();
 
         // Set extension filter
-        final FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
+        final FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
 
         // Show save file dialog
@@ -78,9 +69,6 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Opens an about dialog.
-     */
     @FXML
     private void handleAbout() {
     	final Alert alert = new Alert(AlertType.INFORMATION);

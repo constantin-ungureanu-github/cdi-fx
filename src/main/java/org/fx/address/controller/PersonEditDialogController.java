@@ -13,14 +13,19 @@ import org.fx.address.util.DateUtil;
 public class PersonEditDialogController {
     @FXML
     private TextField firstNameField;
+
     @FXML
     private TextField lastNameField;
+
     @FXML
     private TextField streetField;
+
     @FXML
     private TextField postalCodeField;
+
     @FXML
     private TextField cityField;
+
     @FXML
     private TextField birthdayField;
 

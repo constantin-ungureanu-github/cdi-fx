@@ -1,4 +1,4 @@
-package org.fx.utils;
+package org.fx.cdi.api;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

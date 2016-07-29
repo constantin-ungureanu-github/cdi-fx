@@ -102,7 +102,6 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
-//            dialogStage.getIcons().add(new Image("file:/resources/images/edit.png"));
             dialogStage.showAndWait();
 
             return controller.isOkClicked();
@@ -127,7 +126,6 @@ public class MainApp extends Application {
             final BirthdayStatisticsController controller = loader.getController();
             controller.setPersonData(personData);
 
-//            dialogStage.getIcons().add(new Image("file:resources/images/calendar.png"));
             dialogStage.show();
         } catch (final IOException e) {
             e.printStackTrace();

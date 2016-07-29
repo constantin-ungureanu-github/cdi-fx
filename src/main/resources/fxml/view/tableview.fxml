@@ -17,7 +17,7 @@
     <Label style="-fx-font: NORMAL 20 Tahoma;" text="Address Book" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <columns>
-            <TableColumn prefWidth="100.0" text="First Name">
+            <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="First Name">
                 <cellFactory>
                     <FormattedTableCellFactory alignment="CENTER" />
                 </cellFactory>

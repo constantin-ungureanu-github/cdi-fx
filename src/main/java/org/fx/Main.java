@@ -3,7 +3,7 @@ package org.fx;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import org.fx.application.LoginApplication;
+import org.fx.application.MainApplication;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
@@ -21,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage primaryStage) {
-        weldContainer.instance().select(LoginApplication.class).get().start(primaryStage);
+        weldContainer.instance().select(MainApplication.class).get().start(primaryStage);
 
 //        // Make the application parameters injectable with a standard CDI annotation
 //        weldContainer.instance().select(ApplicationParametersProducer.class).get().setParameters(getParameters());

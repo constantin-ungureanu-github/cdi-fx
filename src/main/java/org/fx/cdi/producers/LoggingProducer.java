@@ -1,4 +1,4 @@
-package org.fx.producers;
+package org.fx.cdi.producers;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;

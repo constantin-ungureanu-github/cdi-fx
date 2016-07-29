@@ -3,10 +3,12 @@ package org.fx.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class BasicModel {
+import org.fx.cdi.api.ViewModel;
+
+public class BasicViewModel implements ViewModel {
     private final StringProperty field;
 
-    public BasicModel(final String field) {
+    public BasicViewModel(final String field) {
         this.field = new SimpleStringProperty(field);
     }
 

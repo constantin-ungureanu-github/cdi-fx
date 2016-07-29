@@ -32,12 +32,20 @@
         <version.cdi>1.2</version.cdi>
         <version.weld>2.3.5.Final</version.weld>
 
+        <!-- Dependencies -->
+        <version.javafx>8</version.javafx>
+
+        <!-- Auxiliary -->
+        <version.hamcrest>1.3</version.hamcrest>
+        <version.guava>19.0</version.guava>
+
         <!-- Logging -->
         <version.slf4j>1.7.21</version.slf4j>
         <version.log4j>2.6.2</version.log4j>
 
         <!-- Testing -->
         <version.junit>4.12</version.junit>
+        <version.testfx>4.0.4-alpha</version.testfx>
     </properties>
 
     <build>
@@ -149,11 +157,37 @@
             <version>${version.weld}</version>
         </dependency>
 
+        <!-- Dependencies -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>javafx</artifactId>
+            <version>${version.javafx}</version>
+            <systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
+            <scope>system</scope>
+        </dependency>
+
+        <!-- Auxiliary -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${version.hamcrest}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${version.guava}</version>
+        </dependency>
+
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${version.slf4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${version.log4j}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -166,20 +200,17 @@
             <version>${version.log4j}</version>
         </dependency>
 
-        <!-- Dependencies -->
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>javafx</artifactId>
-            <version>2.2</version>
-            <systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
-            <scope>system</scope>
-        </dependency>
-
         <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-core</artifactId>
+            <version>${version.testfx}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

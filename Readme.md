@@ -1,4 +1,4 @@
-# This is just for testing JavaFX, no copyright cliams.
+# This is just for testing JavaFX, no copyright claims.
 
 # Usage:
 

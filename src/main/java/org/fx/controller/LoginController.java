@@ -1,20 +1,24 @@
 package org.fx.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javax.inject.Inject;
 
 import javafx.application.Application.Parameters;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import org.fx.model.LoginModel;
+import org.fx.model.LoginViewModel;
 import org.fx.services.LoginService;
 import org.slf4j.Logger;
 
-public class LoginController {
+public class LoginController implements Initializable {
     @FXML
     private TextField username;
 
@@ -36,18 +40,18 @@ public class LoginController {
     @Inject
     private LoginService loginService;
 
-    private LoginModel loginModel;
+    private LoginViewModel loginModel;
 
     @FXML
     void handleSubmitButtonAction(final ActionEvent event) {
         feedback.setText(loginService.login(username.getText(), password.getText()));
     }
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(final URL location, final ResourceBundle resources) {
         logger.info("Initialize LoginController.");
 
-        loginModel = new LoginModel("", "");
+        loginModel = new LoginViewModel("", "");
 
         username.textProperty().bindBidirectional(loginModel.getUsername());
         password.textProperty().bindBidirectional(loginModel.getPassword());

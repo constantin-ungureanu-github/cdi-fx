@@ -3,7 +3,6 @@ package org.fx.tableview;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Person {
-
     private final SimpleStringProperty firstName = new SimpleStringProperty("");
     private final SimpleStringProperty lastName = new SimpleStringProperty("");
     private final SimpleStringProperty email = new SimpleStringProperty("");
