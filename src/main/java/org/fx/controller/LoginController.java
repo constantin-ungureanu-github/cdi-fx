@@ -1,24 +1,27 @@
 package org.fx.controller;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
 
 import javax.inject.Inject;
 
 import javafx.application.Application.Parameters;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import org.fx.model.LoginViewModel;
 import org.fx.services.LoginService;
 import org.slf4j.Logger;
 
-public class LoginController implements Initializable {
+public class LoginController {
     @FXML
     private TextField username;
 
@@ -42,13 +45,32 @@ public class LoginController implements Initializable {
 
     private LoginViewModel loginModel;
 
+    @Inject
+    private FXMLLoader fxmlLoader;
+
+    @Inject
+    private Stage stage;
+
+    public void load() {
+        try {
+            final Parent root = fxmlLoader.load(getClass().getResourceAsStream("/fxml/view/login.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Login");
+            stage.show();
+
+            logger.info("Loaded login view.");
+        } catch (final IOException ioe) {
+            throw new IllegalStateException("Cannot load FXML login screen", ioe);
+        }
+    }
+
     @FXML
     void handleSubmitButtonAction(final ActionEvent event) {
         feedback.setText(loginService.login(username.getText(), password.getText()));
     }
 
-    @Override
-    public void initialize(final URL location, final ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         logger.info("Initialize LoginController.");
 
         loginModel = new LoginViewModel("", "");

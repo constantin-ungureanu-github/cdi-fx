@@ -1,9 +1,12 @@
 package org.fx.controller;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
 import javafx.application.Application.Parameters;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import org.slf4j.Logger;
@@ -27,6 +30,19 @@ public class MainController {
     @FXML
     private LoginController loginController;
 
+    @Inject
+    private FXMLLoader fxmlLoader;
+
+    public void load() {
+        try {
+            fxmlLoader.load(getClass().getResourceAsStream("/fxml/view/main.fxml"));
+
+            logger.info("Loaded main controller.");
+        } catch (final IOException ioe) {
+            throw new IllegalStateException("Cannot load FXML login screen", ioe);
+        }
+    }
+
     @FXML
     public void initialize() {
         logger.info("Initialize MainController.");
@@ -36,5 +52,7 @@ public class MainController {
 
         logger.info("Parent basic: {}", login);
         logger.info("BasicController basicController: {}", loginController);
+
+        loginController.load();
     }
 }

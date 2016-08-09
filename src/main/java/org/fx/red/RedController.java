@@ -1,4 +1,4 @@
-package org.fx.application;
+package org.fx.red;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

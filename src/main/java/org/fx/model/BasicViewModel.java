@@ -3,9 +3,7 @@ package org.fx.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import org.fx.cdi.api.ViewModel;
-
-public class BasicViewModel implements ViewModel {
+public class BasicViewModel {
     private final StringProperty field;
 
     public BasicViewModel(final String field) {

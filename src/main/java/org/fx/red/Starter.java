@@ -1,4 +1,4 @@
-package org.fx.application;
+package org.fx.red;
 
 import java.io.IOException;
 

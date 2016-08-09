@@ -3,9 +3,7 @@ package org.fx.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import org.fx.cdi.api.ViewModel;
-
-public class LoginViewModel implements ViewModel {
+public class LoginViewModel {
     private final StringProperty username;
     private final StringProperty password;
 
