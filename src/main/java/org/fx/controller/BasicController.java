@@ -15,19 +15,19 @@ import org.fx.model.BasicViewModel;
 import org.slf4j.Logger;
 
 public class BasicController {
-    @FXML
-    private TextField field;
-
     @Inject
     private Logger logger;
-
-    private BasicViewModel basicModel;
 
     @Inject
     private FXMLLoader fxmlLoader;
 
     @Inject
     private Stage stage;
+
+    @FXML
+    private TextField field;
+
+    private BasicViewModel basicModel;
 
     public void load() {
         try {

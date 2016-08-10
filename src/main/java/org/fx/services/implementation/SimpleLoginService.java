@@ -3,10 +3,12 @@ package org.fx.services.implementation;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import org.fx.services.LoginService;
 import org.slf4j.Logger;
 
+@Singleton
 public class SimpleLoginService implements LoginService {
     @Inject
     private Logger logger;
@@ -24,11 +26,11 @@ public class SimpleLoginService implements LoginService {
 
     @PostConstruct
     public void init() {
-        logger.info("Initializing login service.");
+        logger.info("Initializing simple login service.");
     }
 
     @PreDestroy
     public void cleanup() {
-        logger.info("Cleaning up login service.");
+        logger.info("Cleaning up simple login service.");
     }
 }

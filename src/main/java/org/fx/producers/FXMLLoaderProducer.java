@@ -2,21 +2,24 @@ package org.fx.producers;
 
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import javafx.fxml.FXMLLoader;
 
 @Singleton
 public class FXMLLoaderProducer {
-
-    @Inject
-    Instance<Object> instance;
+    private Instance<Object> instance;
 
     @Produces
-    public FXMLLoader createLoader() {
+    public FXMLLoader produceLoader() {
         final FXMLLoader fxmlLoader = new FXMLLoader();
+
         fxmlLoader.setControllerFactory(parameters -> instance.select(parameters).get());
+
         return fxmlLoader;
+    }
+
+    public void setInstance(final Instance<Object> instance) {
+        this.instance = instance;
     }
 }

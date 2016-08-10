@@ -1,12 +1,9 @@
 package org.fx.controller;
 
 import java.io.IOException;
-import java.net.URL;
 
 import javax.inject.Inject;
 
-import javafx.application.Application.Parameters;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +19,18 @@ import org.fx.services.LoginService;
 import org.slf4j.Logger;
 
 public class LoginController {
+    @Inject
+    private Logger logger;
+
+    @Inject
+    private FXMLLoader fxmlLoader;
+
+    @Inject
+    private Stage stage;
+
+    @Inject
+    private LoginService loginService;
+
     @FXML
     private TextField username;
 
@@ -34,22 +43,7 @@ public class LoginController {
     @FXML
     private Text feedback;
 
-    @Inject
-    private Logger logger;
-
-    @Inject
-    Parameters applicationParameters;
-
-    @Inject
-    private LoginService loginService;
-
     private LoginViewModel loginModel;
-
-    @Inject
-    private FXMLLoader fxmlLoader;
-
-    @Inject
-    private Stage stage;
 
     public void load() {
         try {
@@ -65,7 +59,7 @@ public class LoginController {
     }
 
     @FXML
-    void handleSubmitButtonAction(final ActionEvent event) {
+    void handleSubmitButtonAction() {
         feedback.setText(loginService.login(username.getText(), password.getText()));
     }
 
