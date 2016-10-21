@@ -3,7 +3,7 @@ package org.fx;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import org.fx.controller.LoginController;
+import org.fx.controller.MainController;
 import org.fx.producers.ApplicationParametersProducer;
 import org.fx.producers.FXMLLoaderProducer;
 import org.fx.producers.HostServicesProducer;
@@ -30,7 +30,7 @@ public class MainApplication extends Application {
         weldContainer.instance().select(ApplicationParametersProducer.class).get().setParameters(getParameters());
         weldContainer.instance().select(PrimaryStageProducer.class).get().setPrimaryStage(primaryStage);
 
-        weldContainer.instance().select(LoginController.class).get().load();
+        weldContainer.instance().select(MainController.class).get().load();
     }
 
     @Override

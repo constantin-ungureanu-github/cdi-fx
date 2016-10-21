@@ -81,17 +81,17 @@ public class PersonEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+        if ((firstNameField.getText() == null) || (firstNameField.getText().length() == 0)) {
             errorMessage += "No valid first name!\n";
         }
-        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+        if ((lastNameField.getText() == null) || (lastNameField.getText().length() == 0)) {
             errorMessage += "No valid last name!\n";
         }
-        if (streetField.getText() == null || streetField.getText().length() == 0) {
+        if ((streetField.getText() == null) || (streetField.getText().length() == 0)) {
             errorMessage += "No valid street!\n";
         }
 
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+        if ((postalCodeField.getText() == null) || (postalCodeField.getText().length() == 0)) {
             errorMessage += "No valid postal code!\n";
         } else {
             try {
@@ -101,11 +101,11 @@ public class PersonEditDialogController {
             }
         }
 
-        if (cityField.getText() == null || cityField.getText().length() == 0) {
+        if ((cityField.getText() == null) || (cityField.getText().length() == 0)) {
             errorMessage += "No valid city!\n";
         }
 
-        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
+        if ((birthdayField.getText() == null) || (birthdayField.getText().length() == 0)) {
             errorMessage += "No valid birthday!\n";
         } else {
             if (!DateUtil.validDate(birthdayField.getText())) {

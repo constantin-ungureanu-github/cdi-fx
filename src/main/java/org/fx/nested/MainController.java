@@ -13,7 +13,8 @@ public class MainController {
     private ListView<Person> personList;
 
     public void initialize() {
-        personList.getItems().addAll(new Person("Hugo", "Lloris"), new Person("Kyle", "Walker"), new Person("Jan", "Verthongen"), new Person("Younes", "Kaboul"));
+        personList.getItems().addAll(new Person("Hugo", "Lloris"), new Person("Kyle", "Walker"), new Person("Jan", "Verthongen"), new Person(
+                "Younes", "Kaboul"));
 
         personList.setCellFactory(listView -> new ListCell<Person>() {
             @Override

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="org.fx.controller.MainController">
-    <children>
-        <fx:include fx:id="basic" source="/fxml/view/basic.fxml" />
-        <fx:include fx:id="login" source="/fxml/view/login.fxml" />
-    </children>
+	<children>
+		<VBox>
+			<VBox>
+				<fx:include fx:id="login" source="/fxml/view/login.fxml" />
+			</VBox>
+			<VBox>
+				<fx:include fx:id="basic" source="/fxml/view/basic.fxml" />
+			</VBox>
+		</VBox>
+	</children>
 </AnchorPane>

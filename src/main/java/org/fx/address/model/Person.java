@@ -13,7 +13,6 @@ import javafx.beans.property.StringProperty;
 
 import org.fx.address.util.LocalDateAdapter;
 
-
 public class Person {
     private final StringProperty firstName;
     private final StringProperty lastName;

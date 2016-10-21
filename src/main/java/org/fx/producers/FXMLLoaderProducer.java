@@ -12,6 +12,10 @@ public class FXMLLoaderProducer {
 
     @Produces
     public FXMLLoader produceLoader() {
+        if (instance == null) {
+            throw new IllegalStateException("The instance container is not available.");
+        }
+
         final FXMLLoader fxmlLoader = new FXMLLoader();
 
         fxmlLoader.setControllerFactory(parameters -> instance.select(parameters).get());

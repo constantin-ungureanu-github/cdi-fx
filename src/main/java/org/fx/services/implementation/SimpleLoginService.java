@@ -15,7 +15,7 @@ public class SimpleLoginService implements LoginService {
 
     @Override
     public String login(final String login, final String password) {
-        if (password != null && password.trim().length() > 0) {
+        if ((password != null) && (password.trim().length() > 0)) {
             logger.info("{} logged in successfully", login);
             return String.format("%s logged in successfully", login);
         }

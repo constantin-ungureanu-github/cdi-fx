@@ -71,12 +71,12 @@ public class RootLayoutController {
 
     @FXML
     private void handleAbout() {
-    	final Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("AddressApp");
-    	alert.setHeaderText("About");
-    	alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
+        final Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("AddressApp");
+        alert.setHeaderText("About");
+        alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
 
-    	alert.showAndWait();
+        alert.showAndWait();
     }
 
     @FXML
@@ -86,6 +86,6 @@ public class RootLayoutController {
 
     @FXML
     private void handleShowBirthdayStatistics() {
-      mainApp.showBirthdayStatistics();
+        mainApp.showBirthdayStatistics();
     }
 }
