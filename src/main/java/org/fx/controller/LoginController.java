@@ -19,12 +19,6 @@ public class LoginController {
     @Inject
     private Logger logger;
 
-//    @Inject
-//    private FXMLLoader fxmlLoader;
-//
-//    @Inject
-//    private Stage stage;
-
     @Inject
     private LoginService loginService;
 
@@ -62,20 +56,6 @@ public class LoginController {
 
         login.disableProperty().bind(username.textProperty().isNotEmpty().and(password.textProperty().isNotEmpty()).not());
     }
-
-//    public void load() {
-//        try {
-//            final Parent root = fxmlLoader.load(getClass().getResourceAsStream("/fxml/view/login.fxml"));
-//
-//            stage.setScene(new Scene(root));
-//            stage.setTitle("Login");
-//            stage.show();
-//
-//            logger.info("Loaded login view.");
-//        } catch (final Exception ioe) {
-//            throw new IllegalStateException("Cannot load FXML login screen", ioe);
-//        }
-//    }
 
     @FXML
     void handleSubmitButtonAction() {

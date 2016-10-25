@@ -13,29 +13,10 @@ public class BasicController {
     @Inject
     private Logger logger;
 
-//    @Inject
-//    private FXMLLoader fxmlLoader;
-//
-//    @Inject
-//    private Stage stage;
-
     @FXML
     private TextField field;
 
     private BasicViewModel basicModel;
-
-    // public void load() {
-    // try {
-    // final Parent root = fxmlLoader.load(getClass().getResourceAsStream("/fxml/view/basic.fxml"));
-    // stage.setScene(new Scene(root));
-    // stage.setTitle("Basic");
-    // stage.show();
-    //
-    // logger.info("Loaded basic view.");
-    // } catch (final IOException ioe) {
-    // throw new IllegalStateException("Cannot load FXML basic screen", ioe);
-    // }
-    // }
 
     @FXML
     public void initialize() {
