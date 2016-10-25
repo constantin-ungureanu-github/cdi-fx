@@ -1,10 +1,10 @@
 package org.fx.producers;
 
+import javafx.fxml.FXMLLoader;
+
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
-
-import javafx.fxml.FXMLLoader;
 
 @Singleton
 public class FXMLLoaderProducer {
@@ -17,9 +17,7 @@ public class FXMLLoaderProducer {
         }
 
         final FXMLLoader fxmlLoader = new FXMLLoader();
-
         fxmlLoader.setControllerFactory(parameters -> instance.select(parameters).get());
-
         return fxmlLoader;
     }
 

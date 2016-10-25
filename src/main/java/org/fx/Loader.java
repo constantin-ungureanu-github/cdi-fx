@@ -2,19 +2,18 @@ package org.fx;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import org.slf4j.Logger;
 
 @Singleton
 public class Loader {
-
     @Inject
     private Logger logger;
 
@@ -32,7 +31,7 @@ public class Loader {
             stage.setTitle("Application");
             stage.show();
 
-            logger.info("Loaded main controller.");
+            logger.info("Loaded {}.", path);
         } catch (final IOException ioe) {
             throw new IllegalStateException("Cannot load FXML application screen", ioe);
         }

@@ -1,9 +1,9 @@
 package org.fx.producers;
 
+import javafx.application.HostServices;
+
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
-
-import javafx.application.HostServices;
 
 @Singleton
 public class HostServicesProducer {

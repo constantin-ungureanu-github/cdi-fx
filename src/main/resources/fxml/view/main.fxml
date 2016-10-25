@@ -4,14 +4,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="org.fx.controller.MainController">
-	<children>
-		<VBox>
-			<VBox>
-				<fx:include fx:id="login" source="/fxml/view/login.fxml" />
-			</VBox>
-			<VBox>
-				<fx:include fx:id="basic" source="/fxml/view/basic.fxml" />
-			</VBox>
-		</VBox>
-	</children>
+    <children>
+        <VBox>
+            <VBox>
+                <fx:include fx:id="login" source="/fxml/view/login.fxml" />
+            </VBox>
+        </VBox>
+    </children>
 </AnchorPane>

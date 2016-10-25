@@ -1,9 +1,9 @@
 package org.fx.producers;
 
+import javafx.application.Application;
+
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
-
-import javafx.application.Application;
 
 @Singleton
 public class ApplicationParametersProducer {

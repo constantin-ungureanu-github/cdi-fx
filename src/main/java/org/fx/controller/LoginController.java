@@ -1,21 +1,17 @@
 package org.fx.controller;
 
-import javax.inject.Inject;
-
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import org.fx.custom.CustomController;
+import javax.inject.Inject;
+
+import org.fx.custom.LoginBox;
 import org.fx.model.LoginViewModel;
 import org.fx.services.LoginService;
 import org.slf4j.Logger;
 
 public class LoginController {
-
     @Inject
     private Logger logger;
 
@@ -23,22 +19,13 @@ public class LoginController {
     private LoginService loginService;
 
     @FXML
-    private TextField username;
+    LoginBox loginBox;
 
     @FXML
-    private PasswordField password;
-
-    @FXML
-    private Button login;
+    private Button loginButton;
 
     @FXML
     private Text feedback;
-
-    @FXML
-    private Parent custom;
-
-    @FXML
-    private CustomController customController;
 
     private LoginViewModel loginModel;
 
@@ -46,19 +33,16 @@ public class LoginController {
     public void initialize() {
         logger.info("Initialize LoginController.");
 
-        logger.info("Parent custom: {}", custom);
-        logger.info("CustomController basicController: {}", customController);
-
         loginModel = new LoginViewModel("", "");
 
-        username.textProperty().bindBidirectional(loginModel.getUsername());
-        password.textProperty().bindBidirectional(loginModel.getPassword());
+        loginBox.userProperty().bindBidirectional(loginModel.getUsername());
+        loginBox.passwordProperty().bindBidirectional(loginModel.getPassword());
 
-        login.disableProperty().bind(username.textProperty().isNotEmpty().and(password.textProperty().isNotEmpty()).not());
+        loginButton.disableProperty().bind(loginBox.userProperty().isNotEmpty().and(loginBox.passwordProperty().isNotEmpty()).not());
     }
 
     @FXML
-    void handleSubmitButtonAction() {
-        feedback.setText(loginService.login(username.getText(), password.getText()));
+    void handleLoginButtonAction() {
+        feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
     }
 }

@@ -1,9 +1,9 @@
 package org.fx.producers;
 
+import javafx.stage.Stage;
+
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
-
-import javafx.stage.Stage;
 
 @Singleton
 public class PrimaryStageProducer {
