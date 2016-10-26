@@ -1,4 +1,4 @@
-package org.fx.custom;
+package org.fx.loaders;
 
 import java.io.IOException;
 

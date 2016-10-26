@@ -6,6 +6,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
+import org.fx.loaders.CustomControlLoader;
+
 public class LoginBox extends VBox {
     private static final String FXML_FILE = "/fxml/view/custom/loginBox.fxml";
 

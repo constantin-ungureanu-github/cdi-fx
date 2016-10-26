@@ -3,6 +3,7 @@ package org.fx;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import org.fx.loaders.ApplicationLoader;
 import org.fx.producers.ApplicationParametersProducer;
 import org.fx.producers.FXMLLoaderProducer;
 import org.fx.producers.HostServicesProducer;
