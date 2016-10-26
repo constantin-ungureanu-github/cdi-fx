@@ -1,16 +1,23 @@
 package org.fx.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 @XmlRootElement(name = "credentials")
 public class LoginViewModel {
-    private final StringProperty user = new SimpleStringProperty() ;
-    private final StringProperty password = new SimpleStringProperty();
+    private final StringProperty user;
+    private final StringProperty password;
 
     public LoginViewModel() {
+        user = new SimpleStringProperty();
+        password = new SimpleStringProperty();
+    }
+
+    public LoginViewModel(final String user, final String password) {
+        this.user = new SimpleStringProperty(user);
+        this.password = new SimpleStringProperty(password);
     }
 
     public StringProperty getUserProperty() {

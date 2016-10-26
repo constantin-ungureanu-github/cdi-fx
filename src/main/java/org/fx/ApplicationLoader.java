@@ -1,19 +1,19 @@
-package org.fx.services;
+package org.fx;
 
 import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import org.slf4j.Logger;
 
 @Singleton
-public class ApplicationLoaderService {
+public class ApplicationLoader {
     @Inject
     private Logger logger;
 

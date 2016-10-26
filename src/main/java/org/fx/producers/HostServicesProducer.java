@@ -1,9 +1,9 @@
 package org.fx.producers;
 
-import javafx.application.HostServices;
-
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
+
+import javafx.application.HostServices;
 
 @Singleton
 public class HostServicesProducer {
@@ -12,7 +12,7 @@ public class HostServicesProducer {
     @Produces
     public HostServices getHostServices() {
         if (hostServices == null) {
-            throw new IllegalStateException("The host services are not available for injection.");
+            throw new IllegalStateException("The host services are not available for injection");
         }
 
         return hostServices;

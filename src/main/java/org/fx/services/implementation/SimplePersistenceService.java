@@ -45,11 +45,11 @@ public class SimplePersistenceService implements PersistenceService {
 
     @PostConstruct
     public void init() {
-        logger.info("Initializing persistence service.");
+        logger.info("Initializing persistence service");
     }
 
     @PreDestroy
     public void cleanup() {
-        logger.info("Closing persistence service.");
+        logger.info("Closing persistence service");
     }
 }

@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Configuration>
-    <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %logger{36} - %msg%n" />
-        </Console>
-    </Appenders>
-    <Loggers>
-        <Root level="info">
-            <AppenderRef ref="Console" />
-        </Root>
-    </Loggers>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		</Console>
+		<File name="Application" fileName="application.log" immediateFlush="false" append="true">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		</File>
+		<File name="Weld" fileName="weld.log" immediateFlush="false" append="false">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %logger{36} - %msg%n" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.jboss.weld" level="trace" additivity="false">
+			<AppenderRef ref="Weld" />
+		</Logger>
+		<Logger name="org.fx" level="trace">
+			<AppenderRef ref="Application" />
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
 </Configuration>

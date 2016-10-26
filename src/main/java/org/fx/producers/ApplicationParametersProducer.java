@@ -1,9 +1,9 @@
 package org.fx.producers;
 
-import javafx.application.Application;
-
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
+
+import javafx.application.Application;
 
 @Singleton
 public class ApplicationParametersProducer {
@@ -12,7 +12,7 @@ public class ApplicationParametersProducer {
     @Produces
     public Application.Parameters getParameters() {
         if (parameters == null) {
-            throw new IllegalStateException("The application parameters are not available for injection.");
+            throw new IllegalStateException("The application parameters are not available for injection");
         }
 
         return parameters;

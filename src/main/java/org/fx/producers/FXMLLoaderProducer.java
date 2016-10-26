@@ -1,10 +1,10 @@
 package org.fx.producers;
 
-import javafx.fxml.FXMLLoader;
-
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
+
+import javafx.fxml.FXMLLoader;
 
 @Singleton
 public class FXMLLoaderProducer {
@@ -13,7 +13,7 @@ public class FXMLLoaderProducer {
     @Produces
     public FXMLLoader produceLoader() {
         if (instance == null) {
-            throw new IllegalStateException("The instance container is not available.");
+            throw new IllegalStateException("The instance container is not available");
         }
 
         final FXMLLoader fxmlLoader = new FXMLLoader();

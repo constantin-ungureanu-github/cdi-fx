@@ -2,11 +2,11 @@ package org.fx.controller;
 
 import java.io.File;
 
+import javax.inject.Inject;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-
-import javax.inject.Inject;
 
 import org.fx.custom.LoginBox;
 import org.fx.model.LoginViewModel;
@@ -39,11 +39,11 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        logger.info("Initialize LoginController.");
+        logger.info("Initialize LoginController");
 
         loginViewModel = (LoginViewModel) persistenceService.load(new File(CREDENTIALS_PATH), LoginViewModel.class);
         if (loginViewModel == null) {
-            loginViewModel = new LoginViewModel();
+            loginViewModel = new LoginViewModel(loginBox.userProperty().get(), loginBox.passwordProperty().get());
         }
 
         loginBox.userProperty().bindBidirectional(loginViewModel.getUserProperty());

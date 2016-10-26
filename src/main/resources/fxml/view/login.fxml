@@ -15,7 +15,7 @@
     <children>
         <VBox>
             <children>
-                <LoginBox fx:id="loginBox" user="" password="" />
+                <LoginBox fx:id="loginBox" user="user" password="password" />
                 <HBox alignment="BASELINE_LEFT" spacing="10">
                     <children>
                         <Button fx:id="loginButton" onAction="#handleLoginButtonAction" text="Login" alignment="CENTER" />

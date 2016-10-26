@@ -1,9 +1,9 @@
 package org.fx.producers;
 
-import javafx.stage.Stage;
-
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
+
+import javafx.stage.Stage;
 
 @Singleton
 public class PrimaryStageProducer {
@@ -12,7 +12,7 @@ public class PrimaryStageProducer {
     @Produces
     public Stage getPrimaryStage() {
         if (primaryStage == null) {
-            throw new IllegalStateException("The primary stage is not available for injection.");
+            throw new IllegalStateException("The primary stage is not available for injection");
         }
 
         return primaryStage;
