@@ -20,7 +20,7 @@ public class LoginBox extends VBox {
     }
 
     public LoginBox() {
-        CustomControlStaticLoader.load(this, FXML_FILE);
+        CustomControlLoader.load(this, FXML_FILE);
     }
 
     public String getUser() {
