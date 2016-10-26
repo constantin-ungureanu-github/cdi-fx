@@ -41,15 +41,19 @@ public class LoginController {
     public void initialize() {
         logger.info("Initialize LoginController");
 
-        loginViewModel = (LoginViewModel) persistenceService.load(new File(CREDENTIALS_PATH), LoginViewModel.class);
-        if (loginViewModel == null) {
-            loginViewModel = new LoginViewModel(loginBox.userProperty().get(), loginBox.passwordProperty().get());
-        }
+        initializeViewModel();
 
         loginBox.userProperty().bindBidirectional(loginViewModel.getUserProperty());
         loginBox.passwordProperty().bindBidirectional(loginViewModel.getPasswordProperty());
 
         loginButton.disableProperty().bind(loginBox.userProperty().isNotEmpty().and(loginBox.passwordProperty().isNotEmpty()).not());
+    }
+
+    private void initializeViewModel() {
+        loginViewModel = (LoginViewModel) persistenceService.load(new File(CREDENTIALS_PATH), LoginViewModel.class);
+        if (loginViewModel == null) {
+            loginViewModel = new LoginViewModel(loginBox.userProperty().get(), loginBox.passwordProperty().get());
+        }
     }
 
     @FXML

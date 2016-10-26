@@ -1,5 +1,3 @@
-# This is just for testing JavaFX, no copyright claims.
-
 # Usage:
 
 > mvn clean

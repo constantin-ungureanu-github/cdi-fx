@@ -1,10 +1,7 @@
 package org.fx.custom;
 
-import java.io.IOException;
-
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -23,14 +20,7 @@ public class LoginBox extends VBox {
     }
 
     public LoginBox() {
-        try {
-            final FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setRoot(this);
-            fxmlLoader.setController(this);
-            fxmlLoader.load(getClass().getResourceAsStream(FXML_FILE));
-        } catch (final IOException ioe) {
-            throw new IllegalStateException("Cannot load FXML", ioe);
-        }
+        CustomControlStaticLoader.load(this, FXML_FILE);
     }
 
     public String getUser() {
@@ -38,7 +28,7 @@ public class LoginBox extends VBox {
     }
 
     public void setUser(final String value) {
-        userProperty().set(value);
+        userProperty().setValue(value);
     }
 
     public StringProperty userProperty() {
@@ -50,7 +40,7 @@ public class LoginBox extends VBox {
     }
 
     public void setPassword(final String value) {
-        passwordProperty().set(value);
+        passwordProperty().setValue(value);
     }
 
     public StringProperty passwordProperty() {
