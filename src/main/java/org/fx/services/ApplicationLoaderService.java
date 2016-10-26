@@ -1,4 +1,4 @@
-package org.fx;
+package org.fx.services;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 
 @Singleton
-public class Loader {
+public class ApplicationLoaderService {
     @Inject
     private Logger logger;
 

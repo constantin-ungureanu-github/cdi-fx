@@ -7,6 +7,7 @@ import org.fx.producers.ApplicationParametersProducer;
 import org.fx.producers.FXMLLoaderProducer;
 import org.fx.producers.HostServicesProducer;
 import org.fx.producers.PrimaryStageProducer;
+import org.fx.services.ApplicationLoaderService;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
@@ -30,7 +31,7 @@ public class MainApplication extends Application {
 		weldContainer.instance().select(ApplicationParametersProducer.class).get().setParameters(getParameters());
 		weldContainer.instance().select(PrimaryStageProducer.class).get().setPrimaryStage(primaryStage);
 
-		weldContainer.instance().select(Loader.class).get().load(MAIN_FXML);
+		weldContainer.instance().select(ApplicationLoaderService.class).get().load(MAIN_FXML);
 	}
 
 	@Override

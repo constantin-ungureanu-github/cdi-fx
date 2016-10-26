@@ -26,11 +26,11 @@ public class SimpleLoginService implements LoginService {
 
     @PostConstruct
     public void init() {
-        logger.info("Initializing simple login service.");
+        logger.info("Initializing login service.");
     }
 
     @PreDestroy
     public void cleanup() {
-        logger.info("Cleaning up simple login service.");
+        logger.info("Closing login service.");
     }
 }
