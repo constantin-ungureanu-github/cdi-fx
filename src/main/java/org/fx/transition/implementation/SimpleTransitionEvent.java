@@ -5,6 +5,7 @@ import org.fx.transition.TransitionEvent;
 public class SimpleTransitionEvent implements TransitionEvent {
     private final String message;
 
+    @Override
     public String getMessage() {
         return message;
     }

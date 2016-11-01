@@ -17,6 +17,7 @@ import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
 
 public class LoginController {
+    private static final String NEXT_FXML = "/fxml/view/next.fxml";
     private static final String CREDENTIALS_PATH = "credentials.xml";
 
     @Inject
@@ -66,6 +67,6 @@ public class LoginController {
         feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
         persistenceService.save(new File(CREDENTIALS_PATH), loginViewModel);
 
-        transitionService.postEvent(new SimpleTransitionEvent("Login Succeded."));
+        transitionService.postEvent(new SimpleTransitionEvent(NEXT_FXML));
     }
 }

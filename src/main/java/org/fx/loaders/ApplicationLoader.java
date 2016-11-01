@@ -1,15 +1,12 @@
 package org.fx.loaders;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import org.fx.transition.TransitionService;
+import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
 
 @Singleton
@@ -18,22 +15,15 @@ public class ApplicationLoader {
     private Logger logger;
 
     @Inject
-    private FXMLLoader fxmlLoader;
-
-    @Inject
     private Stage stage;
 
+    @Inject
+    private TransitionService transitionService;
+
     public void load(final String path) {
-        try {
-            final Parent root = fxmlLoader.load(getClass().getResourceAsStream(path));
+        logger.info("Loading Application");
+        stage.setTitle("Application");
 
-            stage.setScene(new Scene(root));
-            stage.setTitle("Application");
-            stage.show();
-
-            logger.info("Loaded {}.", path);
-        } catch (final IOException ioe) {
-            throw new IllegalStateException("Cannot load FXML application screen", ioe);
-        }
+        transitionService.postEvent(new SimpleTransitionEvent(path));
     }
 }
