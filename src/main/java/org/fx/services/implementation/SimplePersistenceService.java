@@ -2,21 +2,16 @@ package org.fx.services.implementation;
 
 import java.io.File;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.fx.services.PersistenceService;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Singleton
 public class SimplePersistenceService implements PersistenceService {
-    @Inject
-    private Logger logger;
+    private static final Logger logger = LoggerFactory.getLogger(SimplePersistenceService.class);
 
     @Override
     public Object load(final File file, final Class<?> clasz) {
@@ -41,15 +36,5 @@ public class SimplePersistenceService implements PersistenceService {
         } catch (final Exception e) {
             logger.error("{}", e.getMessage());
         }
-    }
-
-    @PostConstruct
-    public void init() {
-        logger.info("Initializing persistence service");
-    }
-
-    @PreDestroy
-    public void cleanup() {
-        logger.info("Closing persistence service");
     }
 }

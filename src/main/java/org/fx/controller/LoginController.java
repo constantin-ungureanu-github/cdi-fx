@@ -1,10 +1,10 @@
 package org.fx.controller;
 
 import java.io.File;
-
-import javax.inject.Inject;
+import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
@@ -15,22 +15,19 @@ import org.fx.services.PersistenceService;
 import org.fx.transition.TransitionService;
 import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LoginController {
-    private static final String NEXT_FXML = "/fxml/view/next.fxml";
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+    private static final String FXML = "/fxml/view/login.fxml";
     private static final String CREDENTIALS_PATH = "credentials.xml";
 
-    @Inject
-    private Logger logger;
+    private final LoginService loginService;
+    private final PersistenceService persistenceService;
+    private final TransitionService transitionService;
 
-    @Inject
-    private LoginService loginService;
-
-    @Inject
-    private PersistenceService persistenceService;
-
-    @Inject
-    private TransitionService transitionService;
+    private LoginViewModel loginViewModel;
 
     @FXML
     LoginBox loginBox;
@@ -41,7 +38,22 @@ public class LoginController {
     @FXML
     private Text feedback;
 
-    private LoginViewModel loginViewModel;
+    public LoginController(final LoginService loginService, final PersistenceService persistenceService, final TransitionService transitionService) {
+        this.loginService = loginService;
+        this.persistenceService = persistenceService;
+        this.transitionService = transitionService;
+    }
+
+    public FXMLLoader load() {
+        try {
+            final FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(type -> this);
+            fxmlLoader.load(getClass().getResourceAsStream(FXML));
+            return fxmlLoader;
+        } catch (final IOException ioe) {
+            throw new IllegalStateException("Cannot load FXML application screen", ioe);
+        }
+    }
 
     @FXML
     public void initialize() {
@@ -67,6 +79,6 @@ public class LoginController {
         feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
         persistenceService.save(new File(CREDENTIALS_PATH), loginViewModel);
 
-        transitionService.postEvent(new SimpleTransitionEvent(NEXT_FXML));
+        transitionService.postEvent(new SimpleTransitionEvent(loginService, persistenceService, "next"));
     }
 }
