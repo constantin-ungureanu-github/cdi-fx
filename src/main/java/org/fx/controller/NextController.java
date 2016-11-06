@@ -1,13 +1,17 @@
 package org.fx.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextArea;
 
 import org.fx.model.NextViewModel;
-import org.fx.services.LoginService;
 import org.fx.services.PersistenceService;
 import org.fx.transition.TransitionService;
 import org.fx.transition.implementation.SimpleTransitionEvent;
@@ -18,15 +22,17 @@ public class NextController {
     private static final Logger logger = LoggerFactory.getLogger(NextController.class);
 
     private static final String FXML = "/fxml/view/next.fxml";
+    private static final String NEXT_PATH = "text.xml";
 
-    private final LoginService loginService;
-    private final PersistenceService persistenceService;
     private final TransitionService transitionService;
+    private final PersistenceService persistenceService;
 
-    NextViewModel nextViewModel = new NextViewModel();
+    private NextViewModel nextViewModel;
 
-    public NextController(final LoginService loginService, final PersistenceService persistenceService, final TransitionService transitionService) {
-        this.loginService = loginService;
+    @FXML
+    TextArea textArea;
+
+    public NextController(final PersistenceService persistenceService, final TransitionService transitionService) {
         this.persistenceService = persistenceService;
         this.transitionService = transitionService;
     }
@@ -45,10 +51,33 @@ public class NextController {
     @FXML
     public void initialize() {
         logger.info("Initialize NextController");
+
+        initializeViewModel();
+
+        textArea.textProperty().bindBidirectional(nextViewModel.getTextProperty());
+    }
+
+    private void initializeViewModel() {
+        nextViewModel = (NextViewModel) persistenceService.load(new File(NEXT_PATH), NextViewModel.class);
+        if (nextViewModel == null) {
+            nextViewModel = new NextViewModel(textArea.textProperty().get());
+        }
     }
 
     @FXML
     public void onClose(final ActionEvent event) {
-        transitionService.postEvent(new SimpleTransitionEvent(loginService, persistenceService, "login"));
+        persistenceService.save(new File(NEXT_PATH), nextViewModel);
+        transitionService.postEvent(new SimpleTransitionEvent("login"));
+    }
+
+    @FXML
+    public void onDelete(final ActionEvent event) {
+        textArea.textProperty().set("");
+    }
+
+    @FXML
+    public void onAbout(final ActionEvent event) {
+        final Alert alert = new Alert(AlertType.NONE, "Application", ButtonType.OK);
+        alert.showAndWait();
     }
 }

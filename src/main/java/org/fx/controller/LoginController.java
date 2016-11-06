@@ -79,6 +79,6 @@ public class LoginController {
         feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
         persistenceService.save(new File(CREDENTIALS_PATH), loginViewModel);
 
-        transitionService.postEvent(new SimpleTransitionEvent(loginService, persistenceService, "next"));
+        transitionService.postEvent(new SimpleTransitionEvent("next"));
     }
 }

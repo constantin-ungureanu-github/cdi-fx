@@ -22,16 +22,15 @@ public class ApplicationLoader {
 
     public ApplicationLoader(final Stage stage) {
         loginService = new SimpleLoginService();
-        transitionService = new SimpleTransitionService(stage);
         persistenceService = new SimplePersistenceService();
+        transitionService = new SimpleTransitionService(loginService, persistenceService, stage);
         this.stage = stage;
     }
 
     public void load() {
         logger.info("Loading Application");
         stage.setTitle("Application");
-        stage.show();
 
-        transitionService.postEvent(new SimpleTransitionEvent(loginService, persistenceService, "login"));
+        transitionService.postEvent(new SimpleTransitionEvent("login"));
     }
 }
