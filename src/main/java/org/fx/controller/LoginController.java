@@ -67,6 +67,6 @@ public class LoginController implements Controller {
         feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
         persistenceService.save(new File(CREDENTIALS_PATH), loginViewModel);
 
-        transitionService.postEvent(new SimpleTransitionEvent(EventType.LOGIN.NEXT));
+        transitionService.postEvent(new SimpleTransitionEvent(EventType.NEXT));
     }
 }
