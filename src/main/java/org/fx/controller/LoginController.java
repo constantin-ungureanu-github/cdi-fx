@@ -10,6 +10,7 @@ import org.fx.custom.LoginBox;
 import org.fx.model.LoginViewModel;
 import org.fx.services.LoginService;
 import org.fx.services.PersistenceService;
+import org.fx.transition.EventType;
 import org.fx.transition.TransitionService;
 import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
@@ -66,6 +67,6 @@ public class LoginController implements Controller {
         feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
         persistenceService.save(new File(CREDENTIALS_PATH), loginViewModel);
 
-        transitionService.postEvent(new SimpleTransitionEvent("next"));
+        transitionService.postEvent(new SimpleTransitionEvent(EventType.LOGIN.NEXT));
     }
 }

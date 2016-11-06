@@ -1,5 +1,5 @@
 package org.fx.transition;
 
 public interface TransitionEvent {
-    public String getMessage();
+    public EventType getEventType();
 }

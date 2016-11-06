@@ -1,21 +1,22 @@
 package org.fx.transition.implementation;
 
+import org.fx.transition.EventType;
 import org.fx.transition.TransitionEvent;
 
 public class SimpleTransitionEvent implements TransitionEvent {
-    private final String message;
+    private final EventType eventType;
 
-    public SimpleTransitionEvent(final String message) {
-        this.message = message;
+    public SimpleTransitionEvent(final EventType eventType) {
+        this.eventType = eventType;
     }
 
     @Override
-    public String getMessage() {
-        return message;
+    public EventType getEventType() {
+        return eventType;
     }
 
     @Override
     public String toString() {
-        return message;
+        return eventType.toString();
     }
 }

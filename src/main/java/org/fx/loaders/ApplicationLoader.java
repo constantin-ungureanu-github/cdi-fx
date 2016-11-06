@@ -6,6 +6,7 @@ import org.fx.services.LoginService;
 import org.fx.services.PersistenceService;
 import org.fx.services.implementation.SimpleLoginService;
 import org.fx.services.implementation.SimplePersistenceService;
+import org.fx.transition.EventType;
 import org.fx.transition.TransitionService;
 import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.fx.transition.implementation.SimpleTransitionService;
@@ -31,6 +32,6 @@ public class ApplicationLoader {
         logger.info("Loading Application");
         stage.setTitle("Application");
 
-        transitionService.postEvent(new SimpleTransitionEvent("login"));
+        transitionService.postEvent(new SimpleTransitionEvent(EventType.LOGIN));
     }
 }

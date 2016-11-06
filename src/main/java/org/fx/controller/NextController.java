@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 
 import org.fx.model.NextViewModel;
 import org.fx.services.PersistenceService;
+import org.fx.transition.EventType;
 import org.fx.transition.TransitionService;
 import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
@@ -54,7 +55,7 @@ public class NextController implements Controller {
     @FXML
     public void onClose(final ActionEvent event) {
         persistenceService.save(new File(NEXT_PATH), nextViewModel);
-        transitionService.postEvent(new SimpleTransitionEvent("login"));
+        transitionService.postEvent(new SimpleTransitionEvent(EventType.LOGIN));
     }
 
     @FXML
