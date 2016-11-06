@@ -1,10 +1,8 @@
 package org.fx.controller;
 
 import java.io.File;
-import java.io.IOException;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
@@ -17,10 +15,10 @@ import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoginController {
+public class LoginController implements Controller {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    private static final String FXML = "/fxml/view/login.fxml";
+    public static final String FXML = "/fxml/view/login.fxml";
     private static final String CREDENTIALS_PATH = "credentials.xml";
 
     private final LoginService loginService;
@@ -42,17 +40,6 @@ public class LoginController {
         this.loginService = loginService;
         this.persistenceService = persistenceService;
         this.transitionService = transitionService;
-    }
-
-    public FXMLLoader load() {
-        try {
-            final FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(type -> this);
-            fxmlLoader.load(getClass().getResourceAsStream(FXML));
-            return fxmlLoader;
-        } catch (final IOException ioe) {
-            throw new IllegalStateException("Cannot load FXML application screen", ioe);
-        }
     }
 
     @FXML

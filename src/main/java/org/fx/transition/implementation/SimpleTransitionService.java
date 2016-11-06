@@ -38,10 +38,10 @@ public class SimpleTransitionService implements TransitionService {
         stage.hide();
         if (event.getMessage().equals("login")) {
             final LoginController loginController = new LoginController(loginService, persistenceService, this);
-            stage.setScene(new Scene(loginController.load().getRoot()));
+            stage.setScene(new Scene(loginController.load(LoginController.FXML).getRoot()));
         } else if (event.getMessage().equals("next")) {
             final NextController nextController = new NextController(persistenceService, this);
-            stage.setScene(new Scene(nextController.load().getRoot()));
+            stage.setScene(new Scene(nextController.load(NextController.FXML).getRoot()));
         }
         stage.show();
     }
