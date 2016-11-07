@@ -1,6 +1,8 @@
 package org.fx.controller;
 
 import java.io.File;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,29 +13,22 @@ import javafx.scene.control.TextArea;
 
 import org.fx.model.NextViewModel;
 import org.fx.services.PersistenceService;
-import org.fx.transition.EventType;
-import org.fx.transition.TransitionService;
-import org.fx.transition.implementation.SimpleTransitionEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class NextController implements Controller {
     private static final Logger logger = LoggerFactory.getLogger(NextController.class);
-
     public static final String FXML = "/fxml/view/next.fxml";
     private static final String NEXT_PATH = "text.xml";
-
-    private final TransitionService transitionService;
     private final PersistenceService persistenceService;
-
     private NextViewModel nextViewModel;
+    private Consumer<Controller> nextCallback;
 
     @FXML
     TextArea textArea;
 
-    public NextController(final PersistenceService persistenceService, final TransitionService transitionService) {
+    public NextController(final PersistenceService persistenceService) {
         this.persistenceService = persistenceService;
-        this.transitionService = transitionService;
     }
 
     @FXML
@@ -55,7 +50,8 @@ public class NextController implements Controller {
     @FXML
     public void onClose(final ActionEvent event) {
         persistenceService.save(new File(NEXT_PATH), nextViewModel);
-        transitionService.postEvent(new SimpleTransitionEvent(EventType.LOGIN));
+
+        nextCallback.accept(this);
     }
 
     @FXML
@@ -67,5 +63,10 @@ public class NextController implements Controller {
     public void onAbout(final ActionEvent event) {
         final Alert alert = new Alert(AlertType.NONE, "Application", ButtonType.OK);
         alert.showAndWait();
+    }
+
+    @Override
+    public void setNextCallback(final Consumer<Controller> nextCallback) {
+        this.nextCallback = Objects.requireNonNull(nextCallback);
     }
 }

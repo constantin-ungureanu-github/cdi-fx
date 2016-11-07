@@ -1,6 +1,7 @@
 package org.fx.controller;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 import javafx.fxml.FXMLLoader;
 
@@ -15,4 +16,6 @@ public interface Controller {
             throw new IllegalStateException("Cannot load FXML application screen", ioe);
         }
     }
+
+    public void setNextCallback(final Consumer<Controller> finishCallback);
 }

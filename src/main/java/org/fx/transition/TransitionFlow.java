@@ -1,5 +1,5 @@
 package org.fx.transition;
 
-public interface TransitionService {
+public interface TransitionFlow {
     public void postEvent(TransitionEvent event);
 }
