@@ -22,7 +22,7 @@ public class LoginController implements Controller {
     private final LoginService loginService;
     private final PersistenceService persistenceService;
     private LoginViewModel loginViewModel;
-    private Consumer<Controller> nextCallback;
+    private Consumer<Void> nextCallback;
 
     @FXML
     LoginBox loginBox;
@@ -62,11 +62,11 @@ public class LoginController implements Controller {
         feedback.setText(loginService.login(loginBox.getUser(), loginBox.getPassword()));
         persistenceService.save(new File(CREDENTIALS_PATH), loginViewModel);
 
-        nextCallback.accept(this);
+        nextCallback.accept(null);
     }
 
     @Override
-    public void setNextCallback(final Consumer<Controller> nextCallback) {
+    public void setNextCallback(final Consumer<Void> nextCallback) {
         this.nextCallback = Objects.requireNonNull(nextCallback);
     }
 }

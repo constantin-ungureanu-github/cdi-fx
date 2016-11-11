@@ -22,7 +22,7 @@ public class NextController implements Controller {
     private static final String NEXT_PATH = "text.xml";
     private final PersistenceService persistenceService;
     private NextViewModel nextViewModel;
-    private Consumer<Controller> nextCallback;
+    private Consumer<Void> nextCallback;
 
     @FXML
     TextArea textArea;
@@ -51,7 +51,7 @@ public class NextController implements Controller {
     public void onClose(final ActionEvent event) {
         persistenceService.save(new File(NEXT_PATH), nextViewModel);
 
-        nextCallback.accept(this);
+        nextCallback.accept(null);
     }
 
     @FXML
@@ -66,7 +66,7 @@ public class NextController implements Controller {
     }
 
     @Override
-    public void setNextCallback(final Consumer<Controller> nextCallback) {
+    public void setNextCallback(final Consumer<Void> nextCallback) {
         this.nextCallback = Objects.requireNonNull(nextCallback);
     }
 }

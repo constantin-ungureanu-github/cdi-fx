@@ -17,5 +17,5 @@ public interface Controller {
         }
     }
 
-    public void setNextCallback(final Consumer<Controller> finishCallback);
+    public void setNextCallback(final Consumer<Void> finishCallback);
 }
