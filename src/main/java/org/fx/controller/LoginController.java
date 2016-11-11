@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Objects;
 import java.util.function.Consumer;
 
+import javax.inject.Inject;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
@@ -13,16 +15,19 @@ import org.fx.model.LoginViewModel;
 import org.fx.services.LoginService;
 import org.fx.services.PersistenceService;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class LoginController implements Controller {
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     public static final String FXML = "/fxml/view/login.fxml";
     private static final String CREDENTIALS_PATH = "credentials.xml";
-    private final LoginService loginService;
-    private final PersistenceService persistenceService;
-    private LoginViewModel loginViewModel;
-    private Consumer<Void> nextCallback;
+
+    @Inject
+    private Logger logger;
+
+    @Inject
+    private LoginService loginService;
+
+    @Inject
+    private PersistenceService persistenceService;
 
     @FXML
     LoginBox loginBox;
@@ -33,10 +38,8 @@ public class LoginController implements Controller {
     @FXML
     private Text feedback;
 
-    public LoginController(final LoginService loginService, final PersistenceService persistenceService) {
-        this.loginService = loginService;
-        this.persistenceService = persistenceService;
-    }
+    private LoginViewModel loginViewModel;
+    private Consumer<Void> nextCallback;
 
     @FXML
     public void initialize() {

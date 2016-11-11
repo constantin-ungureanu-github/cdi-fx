@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Objects;
 import java.util.function.Consumer;
 
+import javax.inject.Inject;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,22 +16,22 @@ import javafx.scene.control.TextArea;
 import org.fx.model.NextViewModel;
 import org.fx.services.PersistenceService;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class NextController implements Controller {
-    private static final Logger logger = LoggerFactory.getLogger(NextController.class);
     public static final String FXML = "/fxml/view/next.fxml";
     private static final String NEXT_PATH = "text.xml";
-    private final PersistenceService persistenceService;
-    private NextViewModel nextViewModel;
-    private Consumer<Void> nextCallback;
+
+    @Inject
+    private Logger logger;
+
+    @Inject
+    private PersistenceService persistenceService;
 
     @FXML
     TextArea textArea;
 
-    public NextController(final PersistenceService persistenceService) {
-        this.persistenceService = persistenceService;
-    }
+    private NextViewModel nextViewModel;
+    private Consumer<Void> nextCallback;
 
     @FXML
     public void initialize() {

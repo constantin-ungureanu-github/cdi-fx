@@ -1,6 +1,12 @@
 package org.fx.transition;
 
 public enum EventType {
+    MAIN {
+        @Override
+        public String toString() {
+            return "Main Event";
+        }
+    },
     LOGIN {
         @Override
         public String toString() {

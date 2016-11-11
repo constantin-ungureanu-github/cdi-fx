@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import org.fx.loaders.CustomControlLoader;
 
 public class LoginBox extends VBox {
-    private static final String FXML_FILE = "/fxml/view/custom/loginBox.fxml";
+    private static final String FXML = "/fxml/view/custom/loginBox.fxml";
 
     @FXML
     private TextField user;
@@ -22,7 +22,7 @@ public class LoginBox extends VBox {
     }
 
     public LoginBox() {
-        CustomControlLoader.load(this, FXML_FILE);
+        CustomControlLoader.load(this, FXML);
     }
 
     public String getUser() {
