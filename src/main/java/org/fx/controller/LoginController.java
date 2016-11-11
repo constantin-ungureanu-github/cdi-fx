@@ -30,7 +30,7 @@ public class LoginController implements Controller {
     private PersistenceService persistenceService;
 
     @FXML
-    LoginBox loginBox;
+    private LoginBox loginBox;
 
     @FXML
     private Button loginButton;

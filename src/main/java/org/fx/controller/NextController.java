@@ -28,7 +28,7 @@ public class NextController implements Controller {
     private PersistenceService persistenceService;
 
     @FXML
-    TextArea textArea;
+    private TextArea textArea;
 
     private NextViewModel nextViewModel;
     private Consumer<Void> nextCallback;

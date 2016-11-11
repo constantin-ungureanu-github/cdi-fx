@@ -17,7 +17,7 @@ public class ApplicationLoader {
     private TransitionFlow transitionFlow;
 
     @Inject
-    Stage stage;
+    private Stage stage;
 
     public void load() {
         logger.info("Loading Application");

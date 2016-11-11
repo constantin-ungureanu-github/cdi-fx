@@ -23,7 +23,7 @@ import com.google.common.eventbus.Subscribe;
 
 public class SimpleTransitionFlow implements TransitionFlow {
     @Inject
-    Logger logger;
+    private Logger logger;
 
     @Inject
     private FXMLLoader fxmlLoader;
