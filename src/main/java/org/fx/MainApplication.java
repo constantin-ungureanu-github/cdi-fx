@@ -12,29 +12,29 @@ import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
 public class MainApplication extends Application {
-    private WeldContainer weldContainer;
+	private WeldContainer weldContainer;
 
-    public static void main(final String[] args) {
-        launch(MainApplication.class);
-    }
+	public static void main(final String[] args) {
+		launch(MainApplication.class);
+	}
 
-    @Override
-    public void init() {
-        weldContainer = new Weld().initialize();
-        weldContainer.instance().select(FXMLLoaderProducer.class).get().setInstance(weldContainer);
-    }
+	@Override
+	public void init() {
+		weldContainer = new Weld().initialize();
+		weldContainer.select(FXMLLoaderProducer.class).get().setInstance(weldContainer);
+	}
 
-    @Override
-   public void start(final Stage primaryStage) {
-        weldContainer.instance().select(HostServicesProducer.class).get().setHostServices(getHostServices());
-        weldContainer.instance().select(ApplicationParametersProducer.class).get().setParameters(getParameters());
-        weldContainer.instance().select(PrimaryStageProducer.class).get().setPrimaryStage(primaryStage);
+	@Override
+	public void start(final Stage primaryStage) {
+		weldContainer.select(HostServicesProducer.class).get().setHostServices(getHostServices());
+		weldContainer.select(ApplicationParametersProducer.class).get().setParameters(getParameters());
+		weldContainer.select(PrimaryStageProducer.class).get().setPrimaryStage(primaryStage);
 
-        weldContainer.instance().select(ApplicationLoader.class).get().load();
-    }
+		weldContainer.select(ApplicationLoader.class).get().load();
+	}
 
-    @Override
-    public void stop() {
-        weldContainer.close();
-    }
+	@Override
+	public void stop() {
+		weldContainer.close();
+	}
 }
